@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Log: Loggable {
+public enum Log: Loggable {
     
     enum LogLevel {
         case verbose, info, debug, warning, error
@@ -45,8 +45,8 @@ enum Log: Loggable {
             fullString += " → \(context.description)"
         }
         
-#if DEBUG
+        #if DEBUG
         print(fullString)
-#endif
+        #endif
     }
 }
