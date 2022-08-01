@@ -23,8 +23,6 @@ LogKit is designed to be a simple and universal logging library with support for
 ## 📦 Installation
 
 ### Swift Package Manager
-
-### Swift Package Manager
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
 
 Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
