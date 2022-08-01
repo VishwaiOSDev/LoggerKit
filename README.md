@@ -1,5 +1,7 @@
+![LogKit](https://user-images.githubusercontent.com/71421776/182190860-be34301a-b494-4060-a0d3-2a54dc31f350.jpg)
+
 # LogKit
-A logger for Xcode.
+A logger for Xcode
 
 ## Motivation
 LogKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LogKit will have different types of log level.
@@ -30,6 +32,8 @@ Add this Swift package in Xcode using its Github repository url. (File > Swift P
 Add this URL https://github.com/VishwaiOSDev/LogKit.git and select **Add Package**.
 
 After adding it select LogKit.
+
+<img width="648" alt="Screenshot 2022-08-01 at 9 14 56 PM" src="https://user-images.githubusercontent.com/71421776/182190544-0dbdd51a-df00-44f2-9064-cd33e44d192b.png">
 
 ### 🚀  How to use
 
