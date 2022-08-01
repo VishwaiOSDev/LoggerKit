@@ -7,14 +7,6 @@
 
 import Foundation
 
-protocol Loggable {
-    static func info(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
-    static func verbose(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
-    static func debug(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
-    static func warning(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
-    static func error(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
-}
-
 enum Log: Loggable {
     
     enum LogLevel {
@@ -22,8 +14,8 @@ enum Log: Loggable {
         
         fileprivate var prefix: String {
             switch self {
-            case .verbose: return "VERBOSE 🎙"
-            case .info: return "INFO"
+            case .verbose: return "VERBOSE ✏️"
+            case .info: return "INFO ℹ️"
             case .debug: return "DEBUG 📦"
             case .warning: return "WARN ⚠️"
             case .error: return "ALERT ❌"
@@ -40,32 +32,7 @@ enum Log: Loggable {
         }
     }
     
-    static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
-        let context = Context(file: file, function: function, line: line)
-        Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
-    }
-    
-    static func verbose(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
-        let context = Context(file: file, function: function, line: line)
-        Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
-    }
-    
-    static func debug(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
-        let context = Context(file: file, function: function, line: line)
-        Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
-    }
-    
-    static func warning(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
-        let context = Context(file: file, function: function, line: line)
-        Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
-    }
-    
-    static func error(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
-        let context = Context(file: file, function: function, line: line)
-        Log.handleLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
-    }
-    
-    fileprivate static func handleLog(
+    static func handleLog(
         level: LogLevel,
         str: String,
         shouldLogContext: Bool,
@@ -78,8 +45,8 @@ enum Log: Loggable {
             fullString += " → \(context.description)"
         }
         
-        #if DEBUG
+#if DEBUG
         print(fullString)
-        #endif
+#endif
     }
 }
