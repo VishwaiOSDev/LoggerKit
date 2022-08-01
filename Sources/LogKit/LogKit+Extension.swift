@@ -15,7 +15,7 @@ protocol Loggable {
     static func error(_ str: StaticString, shouldLogContext: Bool, file: String , function: String, line: Int)
 }
 
-extension Log {
+public extension Log {
     
     static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
