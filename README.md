@@ -1,4 +1,4 @@
-![LogKit](https://user-images.githubusercontent.com/71421776/182190860-be34301a-b494-4060-a0d3-2a54dc31f350.jpg)
+![LogKit](https://user-images.githubusercontent.com/71421776/182191029-877eeb22-282c-482a-8d89-6118dd150dbb.jpg)
 
 # LogKit
 A logger for Xcode
