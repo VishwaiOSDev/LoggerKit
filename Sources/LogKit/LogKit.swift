@@ -18,7 +18,7 @@ public enum Log: Loggable {
             case .info: return "INFO ℹ️"
             case .debug: return "DEBUG 📦"
             case .warning: return "WARN ⚠️"
-            case .error: return "ALERT ❌"
+            case .error: return "ERROR ❌"
             }
         }
     }
@@ -34,19 +34,19 @@ public enum Log: Loggable {
     
     static func handleLog(
         level: LogLevel,
-        str: String,
+        message: String,
         shouldLogContext: Bool,
         context: Context
     ) {
-        let logComponents = ["[\(level.prefix)]", str]
+        let logComponents = ["[\(level.prefix)]", message]
         
         var fullString = logComponents.joined(separator: " ")
         if shouldLogContext {
             fullString += " → \(context.description)"
         }
         
-        #if DEBUG
+#if DEBUG
         print(fullString)
-        #endif
+#endif
     }
 }

@@ -25,6 +25,15 @@ final class LogKitTests: XCTestCase {
     
     func testErrorLog() {
         Log.error("Error, data didn't fetch properly.")
-        /// ✅ Excepted Result: - [ALERT ❌] Error, data didn't fetch properly. → LogKitTests.swift:27 testErrorLog()
+        /// ✅ Excepted Result: - [ERROR ❌] Error, data didn't fetch properly. → LogKitTests.swift:27 testErrorLog()
+    }
+    
+    func testLogWithParameter() {
+        let errorMessage: String = "Dependency Error."
+        Log.error("Something went wrong! \(errorMessage)")
+        Log.info("Something went wrong! \(errorMessage)")
+        Log.debug("Something went wrong! \(errorMessage)")
+        Log.warning("Something went wrong! \(errorMessage)")
+        Log.verbose("Something went wrong! \(errorMessage)")
     }
 }
