@@ -60,7 +60,7 @@ LogKit will provide clean information for you. Output for above code as follows:
 [INFO ℹ️] Something went wrong. → LogKitTests.swift:12 testInfoLog()
 [DEBUG 📦] Debug mode enabled → LogKitTests.swift:17 testDebugLog()
 [WARN ⚠️] Warning, duplication warning. → LogKitTests.swift:22 testWarningLog()
-[ALERT ❌] Error, data didn't fetch properly. → LogKitTests.swift:27 testErrorLog()
+[ERROR ❌] Error, data didn't fetch properly. → LogKitTests.swift:27 testErrorLog()
 ```
 # License
 LogKit is released under the MIT license.
