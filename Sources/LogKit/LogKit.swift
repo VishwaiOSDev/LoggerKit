@@ -14,11 +14,11 @@ public enum Log: Loggable {
         
         fileprivate var prefix: String {
             switch self {
-            case .verbose: return "VERBOSE ✏️"
-            case .info: return "INFO ℹ️"
-            case .debug: return "DEBUG 📦"
-            case .warning: return "WARN ⚠️"
-            case .error: return "ERROR ❌"
+            case .verbose: return "VERBOSE ✏️✏️"
+            case .info: return "INFO ℹ️ℹ️"
+            case .debug: return "DEBUG 🚀🚀"
+            case .warning: return "WARN ⚠️⚠️"
+            case .error: return "ERROR ❌❌"
             }
         }
     }
@@ -45,8 +45,8 @@ public enum Log: Loggable {
             fullString += " → \(context.description)"
         }
         
-#if DEBUG
+        #if DEBUG
         print(fullString)
-#endif
+        #endif
     }
 }
