@@ -52,5 +52,27 @@ final class LogKitTests: XCTestCase {
     
     func testLogWithoutParameter() {
         Log.error()
+        Log.info()
+        Log.debug()
+        Log.warning()
+        Log.verbose()
+    }
+    
+    func testWithComplexObjects() {
+        
+        struct LogTest {
+            var id: Int
+            var message: String
+        }
+        
+        let testObj01 = LogTest(id: 1, message: "Something went wrong")
+        let testObj02 = LogTest(id: 2, message: "404, Error")
+        let testObj03 = LogTest(id: 3, message: "200 Status Ok!")
+        
+        Log.error(testObj01, testObj02, testObj03)
+        Log.info(testObj01, testObj02, testObj03)
+        Log.debug(testObj01, testObj02, testObj03)
+        Log.warning(testObj01, testObj02, testObj03)
+        Log.verbose(testObj01, testObj02, testObj03)
     }
 }

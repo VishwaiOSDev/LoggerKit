@@ -34,14 +34,16 @@ public enum Log: Loggable {
     
     static func handleLog(
         level: LogLevel,
-        message: Any?,
+        message: Any?...,
         shouldLogContext: Bool,
         context: Context
     ) {
         var logComponents = ["[\(level.prefix)]"]
         
-        if let message  {
-            logComponents.append(String(describing: message))
+        message.forEach { message in
+            if let message {
+                logComponents.append(String(describing: message))
+            }
         }
         
         var fullString = logComponents.joined(separator: " ")
