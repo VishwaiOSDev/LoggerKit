@@ -49,4 +49,8 @@ final class LogKitTests: XCTestCase {
         Log.warning("Something went wrong! \(errorMessage)")
         Log.verbose("Something went wrong! \(errorMessage)")
     }
+    
+    func testLogWithoutParameter() {
+        Log.error()
+    }
 }
