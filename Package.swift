@@ -4,11 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "LogKit",
+    name: "LoggerKit",
     platforms: [.iOS(.v13), .watchOS(.v6), .macOS(.v10_15), .tvOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(name: "LogKit", targets: ["LogKit"]),
+        .library(name: "LoggerKit", targets: ["LoggerKit"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -17,7 +17,7 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(name: "LogKit", dependencies: []),
-        .testTarget(name: "LogKitTests", dependencies: ["LogKit"]),
+        .target(name: "LoggerKit", dependencies: []),
+        .testTarget(name: "LoggerKitTests", dependencies: ["LoggerKit"]),
     ]
 )
