@@ -10,35 +10,46 @@ import Foundation
 public enum Log: Loggable {
     
     enum LogLevel {
+        
         case verbose, info, debug, warning, error
+        case `init`, `deinit`
         
         fileprivate var prefix: String {
             switch self {
-            case .verbose: return "VERBOSE ✏️✏️"
-            case .info: return "INFO ℹ️ℹ️"
-            case .debug: return "DEBUG 🚀🚀"
-            case .warning: return "WARN ⚠️⚠️"
-            case .error: return "ERROR ❌❌"
+            case .verbose: return "💜💜"
+            case .info: return "💚💚"
+            case .debug: return "💛💛"
+            case .warning: return "🧡🧡"
+            case .error: return "❤️❤️"
+            case .`init`: return "🔸"
+            case .`deinit`: return "🔷"
             }
         }
     }
     
     struct Context {
-        let file: String
-        let function: String
+        
+        let file: String?
         let line: Int
+        
         var description: String {
-            return "\((file as NSString).lastPathComponent):\(line) \(function)"
+            guard let file else { return "\(line)" }
+            return "\((file as NSString).lastPathComponent): \(line)"
         }
     }
     
-    static func handleLog(
-        level: LogLevel,
-        message: Any?...,
-        shouldLogContext: Bool,
-        context: Context
-    ) {
-        var logComponents = ["[\(level.prefix)]"]
+    static func handleLog(level: LogLevel, message: Any?..., shouldLogContext: Bool, context: Context) {
+        var logComponents: [String] = []
+        
+        if shouldLogContext {
+            if level == .`init` || level == .deinit {
+                logComponents.append("\t\t\t \(level.prefix)")
+            } else {
+                logComponents.append(level.prefix)
+            }
+        }
+
+        logComponents.append("\(context.description) -")
         
         message.forEach { message in
             if let message {
@@ -46,10 +57,7 @@ public enum Log: Loggable {
             }
         }
         
-        var fullString = logComponents.joined(separator: " ")
-        if shouldLogContext {
-            fullString += " → \(context.description)"
-        }
+        let fullString = logComponents.joined(separator: " ")
         
         #if DEBUG
         print(fullString)
