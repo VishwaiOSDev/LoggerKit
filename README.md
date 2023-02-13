@@ -1,10 +1,12 @@
-![LoggerKit](https://user-images.githubusercontent.com/71421776/182191029-877eeb22-282c-482a-8d89-6118dd150dbb.jpg)
+![LoggerKit](https://user-images.githubusercontent.com/71421776/218493453-10d2d9c3-13bb-4601-a8b3-f3b6204e3e50.png)
 
 # LoggerKit
-A logger for Xcode
+
+LoggerKit is a simple, lightweight logging framework for Swift that provides an easy-to-use API for logging messages in Swift projects. It is designed to be fast, efficient, and easy to set up, allowing developers to get up and running quickly. The framework is highly customizable, with several options for controlling the verbosity and formatting of log messages. Whether you're developing a small utility app or a complex enterprise-level system, LoggerKit is a great choice for adding robust logging capabilities to your Swift projects.
 
 ## Motivation
-LoggerKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LogKit will have different types of log level.
+
+LoggerKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LoggerKit will have different types of log level.
 
 ## Features
 
@@ -25,15 +27,11 @@ LoggerKit is designed to be a simple and universal logging library with support 
 ## 📦 Installation
 
 ### Swift Package Manager
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. 
 
-Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
-
-Add this URL https://github.com/VishwaiOSDev/LoggerKit.git and select **Add Package**.
-
-After adding it select LogKit.
-
-<img width="648" alt="Screenshot 2022-08-01 at 9 14 56 PM" src="https://user-images.githubusercontent.com/71421776/182190544-0dbdd51a-df00-44f2-9064-cd33e44d192b.png">
+- Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
+- Add this URL https://github.com/VishwaiOSDev/LoggerKit.git and select **Add Package**
+- After adding it select LoggerKit.
 
 ### 🚀  How to use
 
