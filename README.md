@@ -1,10 +1,10 @@
-![LogKit](https://user-images.githubusercontent.com/71421776/182191029-877eeb22-282c-482a-8d89-6118dd150dbb.jpg)
+![LoggerKit](https://user-images.githubusercontent.com/71421776/182191029-877eeb22-282c-482a-8d89-6118dd150dbb.jpg)
 
-# LogKit
+# LoggerKit
 A logger for Xcode
 
 ## Motivation
-LogKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LogKit will have different types of log level.
+LoggerKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LogKit will have different types of log level.
 
 ## Features
 
@@ -19,6 +19,8 @@ LogKit is designed to be a simple and universal logging library with support for
  - Debug
  - Warning
  - Error
+ - Initialize (init)
+ - Teardown (deinit)
 
 ## 📦 Installation
 
@@ -27,7 +29,7 @@ The [Swift Package Manager](https://swift.org/package-manager/) is a tool for au
 
 Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
 
-Add this URL https://github.com/VishwaiOSDev/LogKit.git and select **Add Package**.
+Add this URL https://github.com/VishwaiOSDev/LoggerKit.git and select **Add Package**.
 
 After adding it select LogKit.
 
@@ -35,32 +37,32 @@ After adding it select LogKit.
 
 ### 🚀  How to use
 
-LogKit makes your life easier
+LoggerKit makes your life easier
 
-Firstly, import the LogKit
+Firstly, import the LoggerKit
 
 ```swift
-import LogKit
+import LoggerKit
 ```
 
 For logging,
 
 ```swift
-Log.verbose("Example of verbose log.")
-Log.info("Something went wrong")
-Log.debug("Debug mode enabled")
-Log.warning("Warning, duplication warning.")
-Log.error("Error, data didn't fetch properly.")
+LoggerKit.verbose("Example of verbose log.")
+LoggerKit.info("Something went wrong")
+LoggerKit.debug("Debug mode enabled")
+LoggerKit.warning("Warning, duplication warning.")
+LoggerKit.error("Error, data didn't fetch properly.")
 ```
 
-LogKit will provide clean information for you. Output for above code as follows:
+LoggerKit will provide clean information for you. Output for above code as follows:
 
 ```
-[VERBOSE ✏️✏️] Example of verbose log. → LogKitTests.swift:7 testVerboseLog()
-[INFO ℹ️ℹ️] Something went wrong. → LogKitTests.swift:12 testInfoLog()
-[DEBUG 🚀🚀] Debug mode enabled → LogKitTests.swift:17 testDebugLog()
-[WARN ⚠️⚠️] Warning, duplication warning. → LogKitTests.swift:22 testWarningLog()
-[ERROR ❌❌] Error, data didn't fetch properly. → LogKitTests.swift:27 testErrorLog()
+💜💜 LoggerKitTests.swift: 49 - Something went wrong! Dependency Error.
+💚💚 LoggerKitTests.swift: 46 - Something went wrong! Dependency Error.
+💛💛 LoggerKitTests.swift: 19 - Debug mode enabled
+🧡🧡 LoggerKitTests.swift: 23 - Warning, duplication warning.
+❤️❤️ LoggerKitTests.swift: 45 - Something went wrong! Dependency Error.
 ```
 # License
-LogKit is released under the MIT license.
+LoggerKit is released under the MIT license.

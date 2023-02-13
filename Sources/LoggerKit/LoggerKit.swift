@@ -1,5 +1,5 @@
 //
-//  LogKit.swift
+//  LoggerKit.swift
 //  
 //
 //  Created by Vishweshwaran on 01/08/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Log: Loggable {
+public enum Logger: Loggable {
     
     enum LogLevel {
         
