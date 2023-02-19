@@ -14,7 +14,7 @@ public protocol Loggable {
 
 public struct LoggerKit {
     
-    enum LogLevel: Int {
+    public enum LogLevel: Int {
         case verbose = 0, info, debug, warning, error
         case `init`, `deinit`
         
@@ -47,7 +47,7 @@ public struct LoggerKit {
         let enable: Bool
         let severity: LoggerKit.LogLevel
         
-        init(enable: Bool, severity: LoggerKit.LogLevel = .info) {
+        public init(enable: Bool, severity: LoggerKit.LogLevel = .info) {
             self.enable = enable
             self.severity = severity
         }
