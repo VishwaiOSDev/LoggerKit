@@ -16,7 +16,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -27,7 +28,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -38,7 +40,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -49,7 +52,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -60,7 +64,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -71,7 +76,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
     
@@ -82,7 +88,8 @@ public extension Loggable {
             message: message,
             shouldLogContext: shouldLogContext,
             context: context,
-            logTag: logTag
+            logTag: logTag,
+            logConfig: logConfig
         )
     }
 }

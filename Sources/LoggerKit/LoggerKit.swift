@@ -56,8 +56,15 @@ public struct LoggerKit {
         let severity: LoggerKit.LogLevel
     }
     
-    static func handleLog(level: LogLevel, message: Any?..., shouldLogContext: Bool, context: Context, logTag: String) {
-        
+    static func handleLog(
+        level: LogLevel,
+        message: Any?...,
+        shouldLogContext: Bool,
+        context: Context,
+        logTag: String,
+        logConfig: LoggerConfig = .init(enable: true, severity: .info)
+    ) {
+        guard logConfig.enable else { return }
         var logComponents: [String] = []
         
         switch level {

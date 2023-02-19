@@ -5,7 +5,7 @@ final class LogKitTests: XCTestCase {
     
     struct Logger: Loggable {
         static var logTag: String = "LoggerKitTests"
-        static var config: LoggerKit.LoggerConfig = .init(enable: true, severity: .debug)
+        static var logConfig: LoggerKit.LoggerConfig = .init(enable: true, severity: .info)
     }
     
     func testInitLog() {
