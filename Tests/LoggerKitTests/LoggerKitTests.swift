@@ -3,6 +3,11 @@ import XCTest
 
 final class LogKitTests: XCTestCase {
     
+    struct Logger: Loggable {
+        static var logTag: String = "LoggerKitTests"
+        static var logConfig: LoggerKit.LoggerConfig = .init(enable: true)
+    }
+    
     func testInitLog() {
         Logger.initialize("LogKitTest Init")
     }
@@ -16,7 +21,7 @@ final class LogKitTests: XCTestCase {
     }
     
     func testDebugLog() {
-        Logger.debug("Debug mode enabled")
+        Logger.debug("Debug Mode")
     }
     
     func testWarningLog() {
@@ -47,14 +52,6 @@ final class LogKitTests: XCTestCase {
         Logger.debug("Something went wrong! \(errorMessage)")
         Logger.warning("Something went wrong! \(errorMessage)")
         Logger.verbose("Something went wrong! \(errorMessage)")
-    }
-    
-    func testLogWithoutParameter() {
-        Logger.error()
-        Logger.info()
-        Logger.debug()
-        Logger.warning()
-        Logger.verbose()
     }
     
     func testWithComplexObjects() {
