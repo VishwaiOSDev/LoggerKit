@@ -41,15 +41,14 @@ public enum Logger: Loggable {
     static func handleLog(level: LogLevel, message: Any?..., shouldLogContext: Bool, context: Context) {
         var logComponents: [String] = []
         
-        if shouldLogContext {
-            if level == .`init` || level == .deinit {
-                logComponents.append("\t\t\t \(level.prefix)")
-            } else {
-                logComponents.append(level.prefix)
-            }
+        switch level {
+        case .`init`, .deinit:
+            logComponents.append("\t\t\t \(level.prefix)")
+        default:
+            logComponents.append(level.prefix)
         }
-
-        logComponents.append("\(context.description) -")
+        
+        if shouldLogContext { logComponents.append("\(context.description) -") }
         
         message.forEach { message in
             if let message {

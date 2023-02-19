@@ -44,12 +44,12 @@ public extension Logger {
         Logger.handleLog(level: .error, message: message, shouldLogContext: shouldLogContext, context: context)
     }
     
-    static func initialize(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func initialize(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
         let context = Context(file: file, line: line)
         Logger.handleLog(level: .`init`, message: message, shouldLogContext: shouldLogContext, context: context)
     }
     
-    static func teardown(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func teardown(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
         let context = Context(file: file, line: line)
         Logger.handleLog(level: .deinit, message: message, shouldLogContext: shouldLogContext, context: context)
     }
