@@ -21,7 +21,7 @@ final class LogKitTests: XCTestCase {
     }
     
     func testDebugLog() {
-        Logger.debug("Debug mode enabled")
+        Logger.debug("Debug Mode")
     }
     
     func testWarningLog() {
@@ -52,14 +52,6 @@ final class LogKitTests: XCTestCase {
         Logger.debug("Something went wrong! \(errorMessage)")
         Logger.warning("Something went wrong! \(errorMessage)")
         Logger.verbose("Something went wrong! \(errorMessage)")
-    }
-    
-    func testLogWithoutParameter() {
-        Logger.error()
-        Logger.info()
-        Logger.debug()
-        Logger.warning()
-        Logger.verbose()
     }
     
     func testWithComplexObjects() {

@@ -9,11 +9,11 @@ import Foundation
 
 public extension Loggable {
     
-    static func info(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func info(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .info,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -21,11 +21,11 @@ public extension Loggable {
         )
     }
     
-    static func verbose(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func verbose(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .verbose,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -33,11 +33,11 @@ public extension Loggable {
         )
     }
     
-    static func debug(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func debug(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .debug,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -45,11 +45,11 @@ public extension Loggable {
         )
     }
     
-    static func warning(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func warning(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .warning,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -57,11 +57,11 @@ public extension Loggable {
         )
     }
     
-    static func error(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+    static func error(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .error,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -69,11 +69,11 @@ public extension Loggable {
         )
     }
     
-    static func initialize(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+    static func initialize(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .`init`,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
@@ -81,15 +81,22 @@ public extension Loggable {
         )
     }
     
-    static func teardown(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+    static func teardown(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
         LoggerKit.handleLog(
             level: .deinit,
-            message: message,
+            message: formatLogMessage(message),
             shouldLogContext: shouldLogContext,
             context: context,
             logTag: logTag,
             logConfig: logConfig
         )
+    }
+}
+
+extension Loggable {
+    
+    static func formatLogMessage(_ message: Any...) -> String {
+        message.map { String(describing: $0) }.joined(separator: " ")
     }
 }

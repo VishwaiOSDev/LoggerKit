@@ -4,6 +4,7 @@
 //
 //  Created by Vishweshwaran on 01/08/22.
 //
+
 import Foundation
 
 public protocol Loggable {
@@ -12,9 +13,11 @@ public protocol Loggable {
 }
 
 extension Loggable {
+    
     public static var logTag: String {
         return String(describing: self)
     }
+    
     public static var logConfig: LoggerKit.LoggerConfig {
         get { return Self.logConfig }
         set { Self.logConfig = newValue }
@@ -23,8 +26,8 @@ extension Loggable {
 
 public struct LoggerKit {
     
-    enum LogLevel {
-        case verbose, info, debug, warning, error
+    enum LogLevel: Int {
+        case verbose = 0, info, debug, warning, error
         case `init`, `deinit`
         
         fileprivate var prefix: String {
@@ -52,19 +55,31 @@ public struct LoggerKit {
     }
     
     public struct LoggerConfig {
+        
         let enable: Bool
         let severity: LoggerKit.LogLevel
+        
+        init(enable: Bool, severity: LoggerKit.LogLevel = .info) {
+            self.enable = enable
+            self.severity = severity
+        }
+        
+        func shouldLog(_ level: LoggerKit.LogLevel) -> Bool {
+            return level.rawValue >= self.severity.rawValue
+        }
     }
     
     static func handleLog(
         level: LogLevel,
-        message: Any?...,
+        message: String,
         shouldLogContext: Bool,
         context: Context,
         logTag: String,
-        logConfig: LoggerConfig = .init(enable: true, severity: .info)
+        logConfig: LoggerConfig
     ) {
         guard logConfig.enable else { return }
+        guard logConfig.shouldLog(level) else { return }
+        
         var logComponents: [String] = []
         
         switch level {
@@ -76,13 +91,9 @@ public struct LoggerKit {
         }
         
         if shouldLogContext { logComponents.append("\(context.description) -") }
-        
-        message.forEach { message in
-            if let message = message {
-                logComponents.append(String(describing: message))
-            }
-        }
-        
+
+        logComponents.append(message)
+
         let fullString = logComponents.joined(separator: " ")
         
         #if DEBUG
