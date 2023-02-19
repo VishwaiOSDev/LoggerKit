@@ -12,18 +12,6 @@ public protocol Loggable {
     static var logConfig: LoggerKit.LoggerConfig { get set }
 }
 
-extension Loggable {
-    
-    public static var logTag: String {
-        return String(describing: self)
-    }
-    
-    public static var logConfig: LoggerKit.LoggerConfig {
-        get { return Self.logConfig }
-        set { Self.logConfig = newValue }
-    }
-}
-
 public struct LoggerKit {
     
     enum LogLevel: Int {
@@ -68,14 +56,104 @@ public struct LoggerKit {
             return level.rawValue >= self.severity.rawValue
         }
     }
+}
+
+public extension Loggable {
     
-    static func handleLog(
-        level: LogLevel,
+    static func info(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .info,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func verbose(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .verbose,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func debug(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .debug,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func warning(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .warning,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func error(_ message: Any..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .error,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func initialize(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .`init`,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+    
+    static func teardown(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+        let context = LoggerKit.Context(file: file, line: line)
+        handleLog(
+            level: .deinit,
+            message: formatLogMessage(message),
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag,
+            logConfig: logConfig
+        )
+    }
+}
+
+extension Loggable {
+    
+    private static func handleLog(
+        level: LoggerKit.LogLevel,
         message: String,
         shouldLogContext: Bool,
-        context: Context,
+        context: LoggerKit.Context,
         logTag: String,
-        logConfig: LoggerConfig
+        logConfig: LoggerKit.LoggerConfig
     ) {
         guard logConfig.enable else { return }
         guard logConfig.shouldLog(level) else { return }
@@ -100,5 +178,9 @@ public struct LoggerKit {
         #if DEBUG
         print(fullString)
         #endif
+    }
+    
+    private static func formatLogMessage(_ message: Any...) -> String {
+        message.map { String(describing: $0) }.joined(separator: " ")
     }
 }
