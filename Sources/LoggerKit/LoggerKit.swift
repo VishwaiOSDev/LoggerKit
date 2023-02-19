@@ -82,11 +82,12 @@ public struct LoggerKit {
         
         var logComponents: [String] = []
         
+        let logFormat = "\(level.prefix) [\(logTag)]"
+        
         switch level {
         case .`init`, .deinit:
-            logComponents.append("\t\t\t \(level.prefix)")
+            logComponents.append("\t\t\t \(logFormat):")
         default:
-            let logFormat = "\(level.prefix) [\(logTag)]"
             logComponents.append(logFormat)
         }
         
