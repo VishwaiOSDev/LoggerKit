@@ -3,6 +3,11 @@ import XCTest
 
 final class LogKitTests: XCTestCase {
     
+    struct Logger: Loggable {
+        static var logTag: String = "LoggerKitTests"
+        static var config: LoggerKit.LoggerConfig = .init(enable: true, severity: .debug)
+    }
+    
     func testInitLog() {
         Logger.initialize("LogKitTest Init")
     }

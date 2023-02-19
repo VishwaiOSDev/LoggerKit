@@ -7,50 +7,82 @@
 
 import Foundation
 
-protocol Loggable {
-    static func info(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func verbose(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func debug(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func warning(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func error(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func initialize(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-    static func teardown(_ message: Any?..., shouldLogContext: Bool, file: String, line: Int)
-}
-
-public extension Logger {
+public extension Loggable {
     
     static func info(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .info, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .info,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func verbose(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .verbose, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .verbose,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func debug(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .debug, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .debug,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func warning(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .warning, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .warning,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func error(_ message: Any?..., shouldLogContext: Bool = true, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .error, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .error,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func initialize(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .`init`, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .`init`,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
     
     static func teardown(_ message: Any?..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
-        let context = Context(file: file, line: line)
-        Logger.handleLog(level: .deinit, message: message, shouldLogContext: shouldLogContext, context: context)
+        let context = LoggerKit.Context(file: file, line: line)
+        LoggerKit.handleLog(
+            level: .deinit,
+            message: message,
+            shouldLogContext: shouldLogContext,
+            context: context,
+            logTag: logTag
+        )
     }
 }
