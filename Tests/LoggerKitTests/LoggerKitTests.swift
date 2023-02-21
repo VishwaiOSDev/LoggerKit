@@ -9,7 +9,7 @@ final class LogKitTests: XCTestCase {
     }
     
     func testInitLog() {
-        Logger.initialize("LogKitTest Init")
+        Logger.initLifeCycle("LogKitTest Init", for: self)
     }
     
     func testVerboseLog() {
@@ -73,6 +73,6 @@ final class LogKitTests: XCTestCase {
     }
     
     func testDeinitLog() {
-        Logger.teardown("LogKitTest deinit")
+        Logger.deinitLifeCycle("LogKitTest deinit", for: self)
     }
 }
