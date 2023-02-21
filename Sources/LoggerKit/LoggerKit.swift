@@ -120,24 +120,26 @@ public extension Loggable {
         )
     }
     
-    static func initialize(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+    static func initLifeCycle(_ message: Any..., for object: AnyObject, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
+        let logMessage = formatLogMessage(message).appendMemoryPointer(object)
         handleLog(
             level: .`init`,
-            message: formatLogMessage(message),
-            shouldLogContext: shouldLogContext,
+            message: logMessage,
+            shouldLogContext: false,
             context: context,
             logTag: logTag,
             logConfig: logConfig
         )
     }
     
-    static func teardown(_ message: Any..., shouldLogContext: Bool = false, file: String = #file, line: Int = #line) {
+    static func deinitLifeCycle(_ message: Any..., for object: AnyObject, file: String = #file, line: Int = #line) {
         let context = LoggerKit.Context(file: file, line: line)
+        let logMessage = formatLogMessage(message).appendMemoryPointer(object)
         handleLog(
             level: .deinit,
-            message: formatLogMessage(message),
-            shouldLogContext: shouldLogContext,
+            message: logMessage,
+            shouldLogContext: false,
             context: context,
             logTag: logTag,
             logConfig: logConfig
@@ -170,9 +172,9 @@ extension Loggable {
         }
         
         if shouldLogContext { logComponents.append("\(context.description) -") }
-
+        
         logComponents.append(message)
-
+        
         let fullString = logComponents.joined(separator: " ")
         
         #if DEBUG
@@ -182,5 +184,12 @@ extension Loggable {
     
     private static func formatLogMessage(_ message: Any...) -> String {
         message.map { String(describing: $0) }.joined(separator: " ")
+    }
+}
+
+private extension String {
+    
+    func appendMemoryPointer(_ instance: AnyObject) -> String {
+        return "\(self) - <\(Unmanaged.passUnretained(instance).toOpaque())>"
     }
 }
