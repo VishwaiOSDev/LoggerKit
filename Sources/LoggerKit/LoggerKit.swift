@@ -171,7 +171,9 @@ extension Loggable {
             logComponents.append(logFormat)
         }
         
-        if shouldLogContext { logComponents.append("\(context.description) -") }
+        if shouldLogContext {
+            logComponents.append("\(context.description) -")
+        }
         
         logComponents.append(message)
         
@@ -184,12 +186,5 @@ extension Loggable {
     
     private static func formatLogMessage(_ message: Any...) -> String {
         message.map { String(describing: $0) }.joined(separator: " ")
-    }
-}
-
-private extension String {
-    
-    func appendMemoryPointer(_ instance: AnyObject) -> String {
-        return "\(self) - <\(Unmanaged.passUnretained(instance).toOpaque())>"
     }
 }
