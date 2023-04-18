@@ -2,11 +2,11 @@
 
 # LoggerKit
 
-LoggerKit is a simple, lightweight logging framework for Swift that provides an easy-to-use API for logging messages in Swift projects. It is designed to be fast, efficient, and easy to set up, allowing developers to get up and running quickly. The framework is highly customizable, with several options for controlling the verbosity and formatting of log messages. Whether you're developing a small utility app or a complex enterprise-level system, LoggerKit is a great choice for adding robust logging capabilities to your Swift projects.
+LoggerKit is a simple and fast logging framework for Swift that's easy to set up and customize. It's great for small or large projects.
 
 ## Motivation
 
-LoggerKit is designed to be a simple and universal logging library with support for multiple Xcode projects. LoggerKit will have different types of log level.
+LoggerKit is designed to be a simple and universal logging library with support for multiple Xcode projects.
 
 ## Features
 
@@ -21,8 +21,8 @@ LoggerKit is designed to be a simple and universal logging library with support 
  - Debug
  - Warning
  - Error
- - Initialize (init)
- - Teardown (deinit)
+ - initLifeCycle
+ - deinitLifeCycle
 
 ## 📦 Installation
 
@@ -51,6 +51,8 @@ LoggerKit.info("Something went wrong")
 LoggerKit.debug("Debug mode enabled")
 LoggerKit.warning("Warning, duplication warning.")
 LoggerKit.error("Error, data didn't fetch properly.")
+LoggerKit.initLifeCycle("ViewModel init", for: self)
+LoggerKit.deinitLifeCycle("ViewModel deinit", for: self)
 ```
 
 LoggerKit will provide clean information for you. Output for above code as follows:
